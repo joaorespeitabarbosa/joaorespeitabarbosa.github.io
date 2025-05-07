@@ -5,16 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CV Jogo</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
 </head>
 <body>
-  <div id="game-container">
-    <h1>🎮 Bem-vindo ao meu CV Interativo</h1>
-    <p>Escolhe uma opção:</p>
-    <button onclick="startSection('educacao')">📚 Formação</button>
-    <button onclick="startSection('experiencia')">💼 Experiência</button>
-    <button onclick="startSection('skills')">🛠️ Skills</button>
-    <div id="output"></div>
+  <div id="home-button" class="hidden">
+    <button id="back-to-home">🏠 CASA</button>
   </div>
+  
+  <div id="game-intro">
+    <h1>🎮 CURRICULUM VITAE</h1>
+    <p>Usa as setas para mover o personagem.</p>
+    <p>Interage com os objetos para descobrir mais sobre mim!</p>
+    <button id="start-game">INICIAR JOGO</button>
+  </div>
+  
+  <div id="game-container"></div>
+  
+  <div id="cv-info" class="hidden">
+    <div id="info-content"></div>
+    <button id="close-info">Voltar ao Jogo</button>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
