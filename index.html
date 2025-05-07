@@ -1,31 +1,315 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CV Jogo</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Developer CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div id="home-button" class="hidden">
-    <button id="back-to-home">🏠 CASA</button>
-  </div>
-  
-  <div id="game-intro">
-    <h1>🎮 CURRICULUM VITAE</h1>
-    <p>Usa as setas para mover o personagem.</p>
-    <p>Interage com os objetos para descobrir mais sobre mim!</p>
-    <button id="start-game">INICIAR JOGO</button>
-  </div>
-  
-  <div id="game-container"></div>
-  
-  <div id="cv-info" class="hidden">
-    <div id="info-content"></div>
-    <button id="close-info">Voltar ao Jogo</button>
-  </div>
-  
-  <script src="script.js"></script>
+<body class="bg-gray-900 text-white min-h-screen retro-font">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl mb-4 glow">PLAYER PROFILE</h1>
+            <div class="pixel-border pixel-box bg-gray-800 p-6 inline-block">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="character">
+                        <div class="w-32 h-32 md:w-48 md:h-48 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user-astronaut text-6xl md:text-8xl"></i>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <h2 class="text-2xl md:text-4xl mb-2">JOÃO RESPEITA BARBOSA</h2>
+                        <p class="text-blue-400 mb-2">Level 27 Game Developer</p>
+                        <div class="flex gap-4">
+                            <div>
+                                <p class="text-xs">HP</p>
+                                <div class="progress-bar w-32">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-xs">MP</p>
+                                <div class="progress-bar w-32">
+                                    <div class="progress-fill" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8">
+            <button onclick="openTab(event, 'stats')" class="tab-button px-4 py-2 bg-gray-800 hover:bg-blue-600 transition-colors border-b-2 border-blue-500 active">STATS</button>
+            <button onclick="openTab(event, 'skills')" class="tab-button px-4 py-2 bg-gray-800 hover:bg-purple-600 transition-colors border-b-2 border-purple-500">SKILLS</button>
+            <button onclick="openTab(event, 'quests')" class="tab-button px-4 py-2 bg-gray-800 hover:bg-green-600 transition-colors border-b-2 border-green-500">QUESTS</button>
+            <button onclick="openTab(event, 'inventory')" class="tab-button px-4 py-2 bg-gray-800 hover:bg-yellow-600 transition-colors border-b-2 border-yellow-500">INVENTORY</button>
+            <button onclick="openTab(event, 'achievements')" class="tab-button px-4 py-2 bg-gray-800 hover:bg-red-600 transition-colors border-b-2 border-red-500">ACHIEVEMENTS</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="pixel-border pixel-box bg-gray-800 p-6 mb-8 min-h-96">
+            <!-- Stats Tab -->
+            <div id="stats" class="tab-content active">
+                <h3 class="text-2xl mb-4 text-blue-400">CHARACTER STATS</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl mb-2">BASIC INFO</h4>
+                        <ul class="space-y-2">
+                            <li><span class="text-gray-400">Class:</span> Game Developer</li>
+                            <li><span class="text-gray-400">Race:</span> Human</li>
+                            <li><span class="text-gray-400">Alignment:</span> Code Alchemist</li>
+                            <li><span class="text-gray-400">Location:</span> Digital Realm</li>
+                            <li><span class="text-gray-400">Guild:</span> Code & Design Alliance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl mb-2">ATTRIBUTES</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <p class="flex justify-between"><span>Creativity</span> <span>95/100</span></p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="flex justify-between"><span>Problem Solving</span> <span>90/100</span></p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="flex justify-between"><span>Teamwork</span> <span>87/100</span></p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="flex justify-between"><span>Leadership</span> <span>72/100</span></p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Tab -->
+            <div id="skills" class="tab-content">
+                <h3 class="text-2xl mb-4 text-purple-400">SKILL TREE</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="pixel-box bg-gray-700 p-4">
+                        <h4 class="text-lg mb-3 text-purple-300"><i class="fas fa-code mr-2"></i>Programming</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between"><span>C/C++</span> <span class="skill-stars">★★★★☆</span></li>
+                            <li class="flex justify-between"><span>C#</span> <span class="skill-stars">★★★★★</span></li>
+                            <li class="flex justify-between"><span>JavaScript</span> <span class="skill-stars">★★★☆☆</span></li>
+                            <li class="flex justify-between"><span>Python</span> <span class="skill-stars">★★★★★</span></li>
+                            <li class="flex justify-between"><span>Assembly</span> <span class="skill-stars">★☆☆☆☆</span></li>
+                        </ul>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4">
+                        <h4 class="text-lg mb-3 text-blue-300"><i class="fas fa-gamepad mr-2"></i>Game Engines</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between"><span>Unity</span> <span class="skill-stars">★★★★★</span></li>
+                            <li class="flex justify-between"><span>Unreal</span> <span class="skill-stars">★★★★☆</span></li>
+                            <li class="flex justify-between"><span>Godot</span> <span class="skill-stars">★★☆☆☆</span></li>
+                            <li class="flex justify-between"><span>GameMaker</span> <span class="skill-stars">★★★★★</span></li>
+                            <li class="flex justify-between"><span>Scratch :P</span> <span class="skill-stars">★★★★★</span></li>
+                        </ul>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4">
+                        <h4 class="text-lg mb-3 text-green-300"><i class="fas fa-paint-brush mr-2"></i>Design</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between"><span>3D Modeling</span> <span class="skill-stars">★★★☆☆</span></li>
+                            <li class="flex justify-between"><span>Pixel Art</span> <span class="skill-stars">★★★★☆</span></li>
+                            <li class="flex justify-between"><span>UI/UX</span> <span class="skill-stars">★★★★☆</span></li>
+                            <li class="flex justify-between"><span>Animation</span> <span class="skill-stars">★★★☆☆</span></li>
+                            <li class="flex justify-between"><span>Level Design</span> <span class="skill-stars">★★★★★</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quests Tab -->
+            <div id="quests" class="tab-content">
+                <h3 class="text-2xl mb-4 text-green-400">QUEST LOG</h3>
+                <div class="space-y-4">
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-green-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-lg mb-1">Search for the Best Game Studio to Work</h4>
+                                <p class="text-gray-400 text-sm">2025 - Present</p>
+                            </div>
+                            <span class="bg-green-900 text-green-300 px-2 py-1 text-xs">ACTIVE QUEST</span>
+                        </div>
+                        <p class="mt-2 text-sm">Exploring opportunities with studios that value Creativity, Sustainability and Player-Centric Design. Polishing portfolio projects to match studio expectations.</p>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-blue-500 opacity-75">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-lg mb-1">Master's Degree in Computer Science</h4>
+                                <p class="text-gray-400 text-sm">2023 - 2025</p>
+                            </div>
+                            <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
+                        </div>
+                        <p class="mt-2 text-sm">Specialized in Games and Human-Centered Computing, with the remaining courses in AI.</p>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-blue-500 opacity-75">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-lg mb-1">Bachelor's Degree in Computer Science</h4>
+                                <p class="text-gray-400 text-sm">2020 - 2023</p>
+                            </div>
+                            <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
+                        </div>
+                        <p class="mt-2 text-sm">Built strong foundations in programming, software engineering, and user interfaces.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Tab -->
+            <div id="inventory" class="tab-content">
+                <h3 class="text-2xl mb-4 text-yellow-400">INVENTORY</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                        <div class="bg-yellow-900 text-yellow-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <p class="text-sm">Instituto Superior Técnico</p>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                        <div class="bg-blue-900 text-blue-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <p class="text-sm">VR Interaction Prototype</p>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                        <div class="bg-purple-900 text-purple-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <p class="text-sm">Thesis in AI for NPC Dialogues</p>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                        <div class="bg-green-900 text-green-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <p class="text-sm">Intensive Game Theory Course in Prague</p>
+                    </div>
+                </div>
+                
+                <h4 class="text-xl mt-8 mb-4 text-yellow-300">PROJECTS</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="pixel-box bg-gray-700 p-4">
+                        <h5 class="text-lg mb-2">"Space Explorer" (2022)</h5>
+                        <p class="text-sm mb-3">Procedural space exploration game with dynamically generated star systems and alien civilizations.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Unity</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">C#</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Procedural Gen</span>
+                        </div>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4">
+                        <h5 class="text-lg mb-2">"Pixel Dungeon" (2020)</h5>
+                        <p class="text-sm mb-3">Roguelike dungeon crawler with permadeath and randomly generated levels.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-600 px-2 py-1 text-xs">C++</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">SDL</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Roguelike</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Tab -->
+            <div id="achievements" class="tab-content">
+                <h3 class="text-2xl mb-4 text-red-400">ACHIEVEMENTS</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="achievement pixel-box bg-gray-700 p-4 border-l-4 border-red-500">
+                        <div class="flex items-start">
+                            <div class="bg-red-900 text-red-300 w-10 h-10 flex items-center justify-center text-xl mr-3">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg">Shipped 5+ Games</h4>
+                                <p class="text-sm mt-1">Successfully completed and released multiple commercial game projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement pixel-box bg-gray-700 p-4 border-l-4 border-red-500">
+                        <div class="flex items-start">
+                            <div class="bg-red-900 text-red-300 w-10 h-10 flex items-center justify-center text-xl mr-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg">Mentored 10+ Juniors</h4>
+                                <p class="text-sm mt-1">Helped train and guide junior developers into successful game programmers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement pixel-box bg-gray-700 p-4 border-l-4 border-red-500">
+                        <div class="flex items-start">
+                            <div class="bg-red-900 text-red-300 w-10 h-10 flex items-center justify-center text-xl mr-3">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg">Game of the Year</h4>
+                                <p class="text-sm mt-1">Lead developer on indie title that won multiple GOTY awards in 2019.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievement pixel-box bg-gray-700 p-4 border-l-4 border-red-500">
+                        <div class="flex items-start">
+                            <div class="bg-red-900 text-red-300 w-10 h-10 flex items-center justify-center text-xl mr-3">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg">Open Source Contributor</h4>
+                                <p class="text-sm mt-1">Contributed to major open source game engines and tools.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Button -->
+        <div class="text-center">
+            <button id="contactBtn" class="pixel-box px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-xl hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105">
+                <i class="fas fa-envelope mr-2"></i> INITIATE CONTACT PROTOCOL
+            </button>
+            
+            <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+                <div class="pixel-border pixel-box bg-gray-800 p-8 max-w-md w-full mx-4">
+                    <h3 class="text-2xl mb-4 text-center text-blue-400">CONTACT FORM</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm mb-1">YOUR NAME</label>
+                            <input type="text" class="w-full px-3 py-2 bg-gray-700 border border-gray-600 focus:border-blue-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-1">EMAIL ADDRESS</label>
+                            <input type="email" class="w-full px-3 py-2 bg-gray-700 border border-gray-600 focus:border-blue-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-1">MESSAGE</label>
+                            <textarea class="w-full px-3 py-2 bg-gray-700 border border-gray-600 focus:border-blue-500 focus:outline-none" rows="4"></textarea>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-700 hover:bg-gray-600">CANCEL</button>
+                            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500">SEND MESSAGE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
