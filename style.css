@@ -311,16 +311,8 @@
 
 /* Corrigindo o efeito glow para o título no tema claro */
 .light-theme .glow {
-    animation: glow-light 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow-light {
-    from {
-        text-shadow: 0 0 5px #22477d, 0 0 10px #22477d, 0 0 15px #e59fff, 0 0 20px #e59fff;
-    }
-    to {
-        text-shadow: 0 0 10px #22477d, 0 0 20px #22477d, 0 0 30px #e59fff, 0 0 40px #e59fff;
-    }
+    animation: glow 2s ease-in-out infinite alternate; /* Use the same animation as dark mode */
+    color: white !important; /* Keep the text white in light mode too */
 }
 
 /* Corrigindo o feedback de hover nas abas no tema claro */
