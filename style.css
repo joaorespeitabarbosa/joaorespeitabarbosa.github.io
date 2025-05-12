@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+:root {
+    /* Dark theme colors (default) */
+    --bg-primary: #111827;        /* gray-900 */
+    --bg-secondary: #1F2937;      /* gray-800 */
+    --bg-tertiary: #374151;       /* gray-700 */
+    --text-primary: #FFFFFF;      /* white */
+    --text-secondary: #D1D5DB;    /* gray-300 */
+    --text-accent-blue: #60A5FA;  /* blue-400 */
+    --text-accent-purple: #C084FC; /* purple-400 */
+    --text-accent-green: #34D399; /* green-400 */
+    --text-accent-yellow: #FBBF24; /* yellow-400 */
+    --text-accent-red: #F87171;   /* red-400 */
+    --border-gradient: linear-gradient(135deg, #ff00ff, #00ffff);
+    --progress-fill: linear-gradient(90deg, #ff00ff, #00ffff);
+    --btn-gradient: linear-gradient(to right, #9333EA, #3B82F6); /* purple-600 to blue-600 */
+    --shadow-color: rgba(0, 0, 0, 0.8);
+}
+
+.light-theme {
+    --bg-primary: #89b6ff;            /* Quase branco, fundo principal */
+    --bg-secondary: #cae2ff;          /* Cinza muito claro */
+    --bg-tertiary: #d1d9e6;           /* Para elementos em destaque */
+    --text-primary: #1e293b;          /* Cinza-azulado escuro para boa leitura */
+    --text-secondary: #191d22;        /* Cinza médio, para subtítulos */
+    --text-accent-blue: #2563eb;      /* Azul-600, destaque limpo */
+    --text-accent-purple: #7c3aed;    /* Roxo moderno */
+    --text-accent-green: #10b981;     /* Verde-500 (tipo menta) */
+    --text-accent-yellow: #eab308;    /* Amarelo forte, mas equilibrado */
+    --text-accent-red: #ef4444;       /* Vermelho claro (alerta ou destaque) */
+    --border-gradient: linear-gradient(135deg, #6366f1, #38bdf8); /* Indigo → Azul neon */
+    --progress-fill: linear-gradient(90deg, #8b5cf6, #06b6d4);    /* Roxo → Ciano */
+    --btn-gradient: linear-gradient(to right, #4f46e5, #0ea5e9); /* Azul escuro → Azul claro */
+    --shadow-color: rgba(0, 0, 0, 0.29); /* Sombra suave, quase invisível */
+}
+
 .retro-font {
     font-family: 'Press Start 2P', cursive;
 }
@@ -7,11 +42,11 @@
 .pixel-border {
     border-style: solid;
     border-width: 4px;
-    border-image: linear-gradient(135deg, #ff00ff, #00ffff) 1;
+    border-image: var(--border-gradient) 1;
 }
 
 .pixel-box {
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 8px 8px 0 var(--shadow-color);
 }
 
 .glow {
@@ -29,7 +64,8 @@
 
 .progress-bar {
     height: 20px;
-    background-color: #333;
+    background-color: var(--bg-tertiary); /* Usa a variável de tema para o fundo da barra */
+    border: 2px solid rgba(0, 0, 0, 0.2); /* Borda semi-transparente que funciona em ambos os temas */
     border-radius: 0;
     position: relative;
     overflow: hidden;
@@ -37,8 +73,11 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    background: var(--progress-fill);
     transition: width 0.5s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .character {
@@ -86,7 +125,23 @@
     animation: shine 3s infinite;
 }
 
+/* Add specific shine effect for light theme with better contrast */
+.light-theme .achievement::after {
+    background: linear-gradient(
+        to bottom right,
+        rgba(59, 130, 246, 0) 0%,
+        rgba(59, 130, 246, 0.3) 50%,
+        rgba(59, 130, 246, 0) 100%
+    );
+    animation: shine-light 3s infinite;
+}
+
 @keyframes shine {
+    0% { transform: rotate(30deg) translate(-30%, -30%); }
+    100% { transform: rotate(30deg) translate(30%, 30%); }
+}
+
+@keyframes shine-light {
     0% { transform: rotate(30deg) translate(-30%, -30%); }
     100% { transform: rotate(30deg) translate(30%, 30%); }
 }
@@ -124,4 +179,220 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.theme-toggle i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(30deg);
+}
+
+/* Estilos específicos para o tema claro */
+.light-theme .pixel-box.bg-gray-700 {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+}
+
+.light-theme .bg-gray-800 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.light-theme .bg-gray-600 {
+    background-color: #B4C6FC !important; /* Azul claro para as tags */
+    color: #1E3A8A !important; /* Azul escuro para o texto das tags */
+}
+
+.light-theme .text-gray-400 {
+    color: #474747 !important; /* Cinza mais escuro para melhor contraste */
+}
+
+.light-theme .bg-green-900,
+.light-theme .bg-blue-900,
+.light-theme .bg-purple-900,
+.light-theme .bg-yellow-900,
+.light-theme .bg-red-900 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid currentColor;
+}
+
+.light-theme .bg-green-900.text-green-300,
+.light-theme .bg-blue-900.text-blue-300,
+.light-theme .bg-purple-900.text-purple-300,
+.light-theme .bg-yellow-900.text-yellow-300,
+.light-theme .bg-red-900.text-red-300 {
+    color: var(--text-primary) !important;
+}
+
+/* Corrigindo as cores dos ícones e badges no tema claro */
+/* Quest status badges - reverting to match dark mode */
+.light-theme .bg-green-900.text-green-300.px-2.py-1.text-xs {
+    background-color: #065f46 !important; /* Dark green like in dark mode */
+    color: #34d399 !important; /* Light green text like in dark mode */
+    border: none !important;
+}
+
+.light-theme .bg-blue-900.text-blue-300.px-2.py-1.text-xs {
+    background-color: #1e3a8a !important; /* Dark blue like in dark mode */
+    color: #60a5fa !important; /* Light blue text like in dark mode */
+    border: none !important;
+}
+
+.light-theme .bg-yellow-900.text-yellow-300.px-2.py-1.text-xs {
+    background-color: #78350f !important; /* Dark yellow/brown like in dark mode */
+    color: #fcd34d !important; /* Light yellow text like in dark mode */
+    border: none !important;
+}
+
+/* Keep the other fixes for inventory icons and achievement icons */
+.light-theme .bg-yellow-900.text-yellow-300:not(.px-2) {
+    background-color: #F59E0B !important;
+    color: white !important;
+    border: none !important;
+}
+
+.light-theme .bg-blue-900.text-blue-300:not(.px-2) {
+    background-color: #3B82F6 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.light-theme .bg-purple-900.text-purple-300:not(.px-2) {
+    background-color: #8B5CF6 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.light-theme .bg-green-900.text-green-300:not(.px-2) {
+    background-color: #10B981 !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Achievement icons */
+.light-theme .bg-red-900.text-red-300 {
+    background-color: #cf3d3dc9 !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Ajuste para os botões de status (COMPLETED, ACTIVE QUEST, etc) */
+.light-theme .bg-green-900.text-green-300,
+.light-theme .bg-blue-900.text-blue-300,
+.light-theme .bg-yellow-900.text-yellow-300 {
+    color: var(--text-primary) !important;
+    font-weight: bold;
+}
+
+/* Fazer o texto das caixas mais escuro no tema claro */
+.light-theme .pixel-box p,
+.light-theme .pixel-box li,
+.light-theme .pixel-box h4,
+.light-theme .pixel-box h5 {
+    color: var(--text-primary);
+}
+
+/* Corrigindo o efeito glow para o título no tema claro */
+.light-theme .glow {
+    animation: glow-light 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-light {
+    from {
+        text-shadow: 0 0 5px #22477d, 0 0 10px #22477d, 0 0 15px #e59fff, 0 0 20px #e59fff;
+    }
+    to {
+        text-shadow: 0 0 10px #22477d, 0 0 20px #22477d, 0 0 30px #e59fff, 0 0 40px #e59fff;
+    }
+}
+
+/* Corrigindo o feedback de hover nas abas no tema claro */
+.light-theme .tab-button:hover {
+    background-color: rgb(59, 131, 246) !important; /* Azul claro semi-transparente */
+    color: var(--text-primary) !important;
+}
+
+.light-theme .tab-button[onclick*="stats"]:hover {
+    background-color: rgb(59, 131, 246) !important;
+    border-color: var(--text-accent-blue) !important;
+}
+
+.light-theme .tab-button[onclick*="skills"]:hover {
+    background-color: rgb(124, 58, 237) !important; /* Roxo */
+    border-color: var(--text-accent-purple) !important;
+}
+
+.light-theme .tab-button[onclick*="quests"]:hover {
+    background-color: rgb(16, 185, 129) !important; /* Verde */
+    border-color: var(--text-accent-green) !important;
+}
+
+.light-theme .tab-button[onclick*="inventory"]:hover {
+    background-color: rgb(234, 178, 8) !important; /* Amarelo */
+    border-color: var(--text-accent-yellow) !important;
+}
+
+.light-theme .tab-button[onclick*="achievements"]:hover {
+    background-color: rgb(239, 68, 68) !important; /* Vermelho */
+    border-color: var(--text-accent-red) !important;
+}
+
+.light-theme .tab-button[onclick*="contact"]:hover {
+    background-color: rgb(16, 185, 129) !important; /* Verde */
+    border-color: #10b981 !important;
+}
+
+/* Corrigindo o ícone do GitHub no tema claro - mantendo o ícone branco com fundo preto */
+.tooltip.pixel-box.bg-gray-800[href*="github"] {
+    background-color: #000 !important; /* Black background for GitHub in both themes */
+}
+
+.tooltip.pixel-box.bg-gray-800[href*="github"] i {
+    color: #fff !important; /* White icon in both themes */
+}
+
+/* Corrigindo o botão "Initiate Contact Protocol" no tema claro */
+.light-theme #contactBtn {
+    background: var(--btn-gradient) !important;
+    color: white !important;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ajustando a cor dos títulos INVENTORY e PROJECTS no tema claro */
+.light-theme .text-yellow-400,
+.light-theme .text-yellow-300 {
+    color: #F59E0B !important; /* Mesma cor amarela dos ícones acadêmicos */
+}
+
+.light-theme #contactModal .pixel-border.pixel-box {
+    background-color: var(--bg-secondary) !important;
+}
+
+.light-theme #contactModal input,
+.light-theme #contactModal textarea {
+    background-color: white !important;
+    color: var(--text-primary) !important;
+    border-color: var(--bg-tertiary) !important;
+}
+
+.light-theme #contactModal button[type="submit"] {
+    background: var(--btn-gradient) !important;
+    color: white !important;
 }

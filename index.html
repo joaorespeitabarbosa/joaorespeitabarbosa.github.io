@@ -2,18 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Game Developer CV</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white min-h-screen retro-font">
+<body class="bg-gray-900 text-white min-h-screen retro-font" style="background-color: var(--bg-primary); color: var(--text-primary);">
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" class="theme-toggle pixel-box" style="background-color: var(--bg-secondary);">
+        <i class="fas fa-moon text-yellow-300"></i>
+    </button>
+
     <div class="container mx-auto px-4 py-8 max-w-5xl">
         <!-- Header -->
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-6xl mb-4 glow">PLAYER PROFILE</h1>
-            <div class="pixel-border pixel-box bg-gray-800 p-6 inline-block">
+            <div class="pixel-border pixel-box bg-gray-800 p-6 inline-block" style="background-color: var(--bg-secondary);">
                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
                     <div class="character">
                         <div class="w-32 h-32 md:w-48 md:h-48 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">

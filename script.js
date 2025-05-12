@@ -14,6 +14,30 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("border-b-2");
 }
 
+// Theme toggling functionality
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+    
+    // Toggle between light and dark themes
+    if (body.classList.contains('light-theme')) {
+        // Switch to dark theme
+        body.classList.remove('light-theme');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        icon.className = icon.className.replace('text-yellow-600', 'text-yellow-300');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        // Switch to light theme
+        body.classList.add('light-theme');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        icon.className = icon.className.replace('text-yellow-300', 'text-yellow-600');
+        localStorage.setItem('theme', 'light');
+    }
+}
+
 // Copy to clipboard function
 function copyToClipboard(text, tooltipElement) {
     // Create a temporary input element
@@ -40,6 +64,22 @@ function copyToClipboard(text, tooltipElement) {
 
 // Contact modal
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme initialization
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+            themeToggle.querySelector('i').className = themeToggle.querySelector('i').className.replace('text-yellow-300', 'text-yellow-600');
+        }
+        
+        // Add click event listener to theme toggle button
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
     const contactBtn = document.getElementById("contactBtn");
     const contactModal = document.getElementById("contactModal");
     
