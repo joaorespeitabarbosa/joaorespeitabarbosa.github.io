@@ -205,6 +205,30 @@
     transform: rotate(30deg);
 }
 
+/* Sound toggle button */
+.sound-toggle {
+    position: fixed;
+    top: 20px;
+    right: 80px; /* Posicionado à esquerda do botão de tema */
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.sound-toggle i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.sound-toggle:hover i {
+    transform: rotate(30deg);
+}
+
 /* Estilos específicos para o tema claro */
 .light-theme .pixel-box.bg-gray-700 {
     background-color: var(--bg-tertiary) !important;
@@ -387,4 +411,33 @@
 .light-theme #contactModal button[type="submit"] {
     background: var(--btn-gradient) !important;
     color: white !important;
+}
+
+/* Sound control button styling */
+#sound-control {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 30;
+}
+
+#toggle-sound {
+  background-color: #222;
+  border: 2px solid #0f0;
+  color: #0f0;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toggle-sound:hover {
+  background-color: #0f0;
+  color: #111;
 }
