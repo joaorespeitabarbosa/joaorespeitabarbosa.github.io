@@ -14,9 +14,21 @@
     </button>    <!-- Sound Toggle Button -->
     <button id="soundToggle" class="sound-toggle pixel-box" style="background-color: var(--bg-secondary);">
         <i class="fas fa-volume-mute text-red-400"></i>
-    </button><!-- Audio element for background music -->
+    </button>
+    
+    <!-- Previous Song Button (hidden by default) -->
+    <button id="prevSong" class="prev-song pixel-box hidden" style="background-color: var(--bg-secondary);">
+        <i class="fas fa-step-backward text-blue-400"></i>
+    </button>
+    
+    <!-- Next Song Button (hidden by default) -->
+    <button id="nextSong" class="next-song pixel-box hidden" style="background-color: var(--bg-secondary);">
+        <i class="fas fa-step-forward text-blue-400"></i>
+    </button>
+    
+    <!-- Audio element for background music -->
     <audio id="background-music" loop preload="auto">
-        <source src="audio/trumpet.mp3" type="audio/mp3">
+        <source src="audio/Zelda.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 

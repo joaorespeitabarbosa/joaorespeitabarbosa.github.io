@@ -229,6 +229,54 @@
     transform: rotate(30deg);
 }
 
+/* Previous song button */
+.prev-song {
+    position: fixed;
+    top: 70px; /* Positioned below sound toggle button */
+    right: 80px;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.prev-song i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.prev-song:hover i {
+    transform: translateX(-3px);
+}
+
+/* Next song button */
+.next-song {
+    position: fixed;
+    top: 70px; /* Positioned below theme toggle button */
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.next-song i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.next-song:hover i {
+    transform: translateX(3px);
+}
+
 /* Estilos específicos para o tema claro */
 .light-theme .pixel-box.bg-gray-700 {
     background-color: var(--bg-tertiary) !important;
