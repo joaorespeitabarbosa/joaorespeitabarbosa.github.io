@@ -4,35 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Game Developer CV</title>
+    <!-- TODO: For production, install Tailwind as a package instead of using CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white min-h-screen retro-font" style="background-color: var(--bg-primary); color: var(--text-primary);">    <!-- Theme Toggle Button -->
-    <button id="themeToggle" class="theme-toggle pixel-box" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-moon text-yellow-300"></i>
-    </button>    <!-- Sound Toggle Button -->
-    <button id="soundToggle" class="sound-toggle pixel-box" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-volume-mute text-red-400"></i>
-    </button>
+<body class="bg-gray-900 text-white min-h-screen retro-font">
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+        <canvas id="intro-canvas"></canvas>
+        <button id="start-button">START</button>
+        <div class="scanline"></div>
+        <div class="crt-effect"></div>
+        
+        <!-- Audio element for PS2 intro sound -->
+        <audio id="ps2-audio" preload="auto">
+            <source src="audio/PS2.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     
-    <!-- Previous Song Button (hidden by default) -->
-    <button id="prevSong" class="prev-song pixel-box hidden" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-step-backward text-blue-400"></i>
-    </button>
-    
-    <!-- Next Song Button (hidden by default) -->
-    <button id="nextSong" class="next-song pixel-box hidden" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-step-forward text-blue-400"></i>
-    </button>
-    
-    <!-- Audio element for background music -->
-    <audio id="background-music" loop preload="auto">
-        <source src="audio/Zelda.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Main Content -->
+    <div id="main-content" style="background-color: var(--bg-primary); color: var(--text-primary);">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="theme-toggle pixel-box" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-moon text-yellow-300"></i>
+        </button>
+        
+        <!-- Sound Toggle Button -->
+        <button id="soundToggle" class="sound-toggle pixel-box" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-volume-mute text-red-400"></i>
+        </button>
+        
+        <!-- Previous Song Button (hidden by default) -->
+        <button id="prevSong" class="prev-song pixel-box hidden" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-step-backward text-blue-400"></i>
+        </button>
+        
+        <!-- Next Song Button (hidden by default) -->
+        <button id="nextSong" class="next-song pixel-box hidden" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-step-forward text-blue-400"></i>
+        </button>
+        
+        <!-- Audio element for background music -->
+        <audio id="background-music" loop preload="auto">
+            <source src="audio/Zelda.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
 
-    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="container mx-auto px-4 py-8 max-w-5xl">
         <!-- Header -->
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-6xl mb-4 glow">PLAYER PROFILE</h1>
@@ -45,7 +65,7 @@
                     </div>
                     <div class="text-left">
                         <h2 class="text-2xl md:text-4xl mb-2">JOÃO RESPEITA BARBOSA</h2>
-                        <p class="text-blue-400 mb-2">Level 27 Game Developer</p>
+                        <p class="text-blue-400 mb-2">Level 23 Game Developer</p>
                         <div class="flex gap-4 mb-3">
                             <div>
                                 <p class="text-xs">HP</p>
@@ -445,8 +465,11 @@
             </div>
         </div>
     </div>
+    </div><!-- Fechamento da div main-content -->
 
     <script src="script.js"></script>
     <script src="audio.js"></script>
+    <script src="background-animation.js"></script>
+    <script src="intro-animation.js"></script>
 </body>
 </html>
