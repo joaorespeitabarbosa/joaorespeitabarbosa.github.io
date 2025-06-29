@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const soundToggle = document.getElementById('soundToggle');
   const prevSongBtn = document.getElementById('prevSong');
   const nextSongBtn = document.getElementById('nextSong');
+  const ps2Audio = document.getElementById('ps2-audio');
   
   // Playlist configuration
   const playlist = [
