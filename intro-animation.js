@@ -275,17 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.fillText(baseText, centerX, centerY);
     ctx.fillText(dots, centerX, centerY + dotsVerticalOffset);
     
-    // Adicionar texto "Game Developer CV" abaixo
-    if (progress > 0.5) {
-      const subTextAlpha = (progress - 0.5) * 2;
-      ctx.globalAlpha = subTextAlpha;
-      ctx.fillStyle = "#FFFFFF";
-      const subFontSize = Math.floor(fontSize * 0.3);
-      ctx.font = `${subFontSize}px 'Press Start 2P', monospace`;
-      // Posiciona o texto mais abaixo, com a mesma distância que o texto principal tem dos pontos
-      ctx.fillText("GAME DEVELOPER CV", centerX, centerY + dotsVerticalOffset * 2.4);
-      ctx.globalAlpha = 1.0;
-    }
+    // Removido texto "Game Developer CV"
   }
   
   // Desenhar o logo desaparecendo
@@ -330,11 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ctx.fillText(baseText, centerX, centerY);
       ctx.fillText(dots, centerX, centerY + dotsVerticalOffset);
       
-      // Texto "Game Developer CV"
-      const subFontSize = Math.floor(fontSize * 0.3);
-      ctx.font = `${subFontSize}px 'Press Start 2P', monospace`;
-      // Posiciona o texto mais abaixo, com a mesma distância que o texto principal tem dos pontos
-      ctx.fillText("GAME DEVELOPER CV", centerX, centerY + dotsVerticalOffset * 2.4);
+      // Texto "Game Developer CV" removido
     }
     
     // Restaurar a opacidade global ao final do desenho dos textos
