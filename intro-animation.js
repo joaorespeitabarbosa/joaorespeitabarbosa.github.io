@@ -28,11 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Estado da animação
   let animationStarted = false;
   let animationTime = 0;
-<<<<<<< HEAD
-  let animationDuration = 10000; // 13 segundos (duração do som PS2 editado)
-=======
   let animationDuration = 16000; // 16 segundos (duração do som PS2)
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
   let lastTimestamp = 0;
   
   // Cores do PlayStation
@@ -94,16 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Função para desenhar a animação do PS2
   function drawPS2Animation(progress) {
-<<<<<<< HEAD
-    // Parte 1: Fase ampliada dos quadrados em órbita (0-40%) - tempo ligeiramente reduzido
-    if (progress < 0.4) {
-      const fadeInProgress = progress / 0.4;
-      drawColorSquares(fadeInProgress);
-      
-      // Adiciona fade para a próxima fase perto do final desta fase
-      if (progress > 0.35) {
-        const transitionProgress = (progress - 0.35) / 0.05;
-=======
     // Parte 1: Fase ampliada dos quadrados em órbita (0-50%) - mais tempo para esta fase
     if (progress < 0.5) {
       const fadeInProgress = progress / 0.5;
@@ -112,23 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // Adiciona fade para a próxima fase perto do final desta fase
       if (progress > 0.45) {
         const transitionProgress = (progress - 0.45) / 0.05;
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
         const pulseProgress = 0; // Início da animação de pulso
         ctx.globalAlpha = transitionProgress;
         drawPulsingLogo(pulseProgress);
         ctx.globalAlpha = 1;
       }
     } 
-<<<<<<< HEAD
-    // Parte 2: Logo pulsando com texto (40-80%) - ligeiramente ampliado para compensar
-    else if (progress < 0.8) {
-      const pulseProgress = (progress - 0.4) / 0.4;
-      drawPulsingLogo(pulseProgress);
-    } 
-    // Parte 3: Fade out para o conteúdo principal (80-100%) - ligeiramente ampliado
-    else {
-      const fadeOutProgress = (progress - 0.8) / 0.2;
-=======
     // Parte 2: Logo pulsando com texto (50-85%) - pula a fase de formação estática
     else if (progress < 0.85) {
       const pulseProgress = (progress - 0.5) / 0.35;
@@ -137,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Parte 3: Fade out para o conteúdo principal (85-100%)
     else {
       const fadeOutProgress = (progress - 0.85) / 0.15;
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
       drawFadingOutLogo(fadeOutProgress);
     }
   }
@@ -300,8 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.fillStyle = `rgba(255, 255, 255, ${alpha + 0.1})`;
     ctx.fillText(baseText, centerX, centerY);
     ctx.fillText(dots, centerX, centerY + dotsVerticalOffset);
-<<<<<<< HEAD
-=======
     
     // Adicionar texto "Game Developer CV" abaixo
     if (progress > 0.5) {
@@ -314,7 +286,6 @@ document.addEventListener('DOMContentLoaded', function() {
       ctx.fillText("GAME DEVELOPER CV", centerX, centerY + dotsVerticalOffset * 2.4);
       ctx.globalAlpha = 1.0;
     }
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
   }
   
   // Desenhar o logo desaparecendo
@@ -358,15 +329,12 @@ document.addEventListener('DOMContentLoaded', function() {
       ctx.fillStyle = "#FFFFFF";
       ctx.fillText(baseText, centerX, centerY);
       ctx.fillText(dots, centerX, centerY + dotsVerticalOffset);
-<<<<<<< HEAD
-=======
       
       // Texto "Game Developer CV"
       const subFontSize = Math.floor(fontSize * 0.3);
       ctx.font = `${subFontSize}px 'Press Start 2P', monospace`;
       // Posiciona o texto mais abaixo, com a mesma distância que o texto principal tem dos pontos
       ctx.fillText("GAME DEVELOPER CV", centerX, centerY + dotsVerticalOffset * 2.4);
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
     }
     
     // Restaurar a opacidade global ao final do desenho dos textos
@@ -389,29 +357,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Função para finalizar a animação
   function finishAnimation() {
-<<<<<<< HEAD
-    // Garantir que o canvas de fundo esteja visível
-    const backgroundCanvas = document.getElementById('background-animation');
-    if (backgroundCanvas) {
-      backgroundCanvas.style.opacity = '1';
-      backgroundCanvas.style.display = 'block';
-      backgroundCanvas.style.zIndex = '-1';
-    }
-    
-    // Inicializar a animação de fundo ANTES do fade out
-    if (typeof window.initBackgroundAnimation === 'function') {
-      console.log("Iniciando animação de fundo antes do fade out da intro");
-      // Limpar qualquer estado de animação anterior
-      window.animationLoopActive = false;
-      if (window.animationFrameId) cancelAnimationFrame(window.animationFrameId);
-      if (window.animationTimeout) clearTimeout(window.animationTimeout);
-      
-      // Inicializar a animação de fundo
-      window.initBackgroundAnimation();
-    }
-    
-=======
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
     // Fade out da tela de introdução
     introScreen.style.opacity = 0;
     
@@ -422,28 +367,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Aguardar término da transição antes de mostrar o conteúdo
     setTimeout(() => {
-<<<<<<< HEAD
-      // Ocultar a tela de introdução
       introScreen.style.display = 'none';
-      // Mostrar o conteúdo principal
-=======
-      introScreen.style.display = 'none';
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
       mainContent.style.display = 'block';
       
       // Fade in do conteúdo principal
       setTimeout(() => {
         mainContent.style.opacity = 1;
         
-<<<<<<< HEAD
-        // Verificar novamente se o canvas de fundo está visível
-        if (backgroundCanvas) {
-          console.log("Confirmando visibilidade da animação de fundo após transição");
-          backgroundCanvas.style.opacity = '1';
-        }
-      }, 100);
-    }, 800); // 800ms para a transição de fade out - mais rápido para combinar com a animação reduzida
-=======
         // Wait with a longer delay to ensure everything is stable before starting animation
         setTimeout(() => {
           // Inicializar animação de fundo - only call once with a clean slate
@@ -464,7 +394,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500); // Longer delay to ensure DOM is truly ready
       }, 100);
     }, 1000); // 1 segundo para a transição de fade out
->>>>>>> 1111fd498bce56b13cc12ce9ef9d715348412f61
   }
   
   // Adicionar event listener para o botão de start
