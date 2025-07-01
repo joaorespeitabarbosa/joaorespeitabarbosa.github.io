@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Estado da animação
   let animationStarted = false;
   let animationTime = 0;
-  let animationDuration = 16000; // 16 segundos (duração do som PS2)
+  let animationDuration = 10000; // 10 segundos (duração reduzida)
   let lastTimestamp = 0;
   
   // Cores do PlayStation
@@ -376,21 +376,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Wait with a longer delay to ensure everything is stable before starting animation
         setTimeout(() => {
-          // Inicializar animação de fundo - only call once with a clean slate
-          if (typeof window.initBackgroundAnimation === 'function') {
-            console.log("Iniciando animação de fundo após intro com delay de 500ms");
-            // Clear any existing animation state first
-            window.animationLoopActive = false;
-            if (window.animationFrameId) cancelAnimationFrame(window.animationFrameId);
-            if (window.animationTimeout) clearTimeout(window.animationTimeout);
-            
-            // Start with a delay to ensure clean transition
-            setTimeout(() => {
-              window.initBackgroundAnimation();
-            }, 500);
-          } else {
-            console.error("Função initBackgroundAnimation não encontrada");
-          }
+          // Não há mais animação de fundo para inicializar
+          console.log("Transição para conteúdo principal concluída");
         }, 500); // Longer delay to ensure DOM is truly ready
       }, 100);
     }, 1000); // 1 segundo para a transição de fade out
