@@ -80,6 +80,14 @@ document.addEventListener('DOMContentLoaded', function() {
         themeToggle.addEventListener('click', toggleTheme);
     }
     
+    // Background animation control
+    window.toggleBackgroundAnimation = function(show) {
+        const canvas = document.getElementById('background-animation');
+        if (canvas) {
+            canvas.style.display = show ? 'block' : 'none';
+        }
+    };
+    
     const contactBtn = document.getElementById("contactBtn");
     const contactModal = document.getElementById("contactModal");
     
@@ -149,4 +157,26 @@ function closeModal() {
         contactModal.classList.add("hidden");
         document.body.style.overflow = "auto";
     }
+}
+
+// Função para ativar efeitos de CRT na intro
+function activateCRTEffects() {
+  const scanline = document.querySelector('.scanline');
+  const crtEffect = document.querySelector('.crt-effect');
+  
+  if (scanline && crtEffect) {
+    scanline.classList.add('active');
+    crtEffect.classList.add('active');
+  }
+}
+
+// Função para desativar efeitos de CRT na intro
+function deactivateCRTEffects() {
+  const scanline = document.querySelector('.scanline');
+  const crtEffect = document.querySelector('.crt-effect');
+  
+  if (scanline && crtEffect) {
+    scanline.classList.remove('active');
+    crtEffect.classList.remove('active');
+  }
 }

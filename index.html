@@ -4,35 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Game Developer CV</title>
+    <!-- TODO: For production, install Tailwind as a package instead of using CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white min-h-screen retro-font" style="background-color: var(--bg-primary); color: var(--text-primary);">    <!-- Theme Toggle Button -->
-    <button id="themeToggle" class="theme-toggle pixel-box" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-moon text-yellow-300"></i>
-    </button>    <!-- Sound Toggle Button -->
-    <button id="soundToggle" class="sound-toggle pixel-box" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-volume-mute text-red-400"></i>
-    </button>
+<body class="bg-gray-900 text-white min-h-screen retro-font">
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+        <canvas id="intro-canvas"></canvas>
+        <button id="start-button">START</button>
+        <div class="scanline"></div>
+        <div class="crt-effect"></div>
+        
+        <!-- Audio element for PS2 intro sound -->
+        <audio id="ps2-audio" preload="auto">
+            <source src="audios/PS2.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     
-    <!-- Previous Song Button (hidden by default) -->
-    <button id="prevSong" class="prev-song pixel-box hidden" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-step-backward text-blue-400"></i>
-    </button>
-    
-    <!-- Next Song Button (hidden by default) -->
-    <button id="nextSong" class="next-song pixel-box hidden" style="background-color: var(--bg-secondary);">
-        <i class="fas fa-step-forward text-blue-400"></i>
-    </button>
-    
-    <!-- Audio element for background music -->
-    <audio id="background-music" loop preload="auto">
-        <source src="audio/Zelda.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Main Content -->
+    <div id="main-content" style="background-color: var(--bg-primary); color: var(--text-primary);">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="theme-toggle pixel-box" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-moon text-yellow-300"></i>
+        </button>
+        
+        <!-- Sound Toggle Button -->
+        <button id="soundToggle" class="sound-toggle pixel-box" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-volume-mute text-red-400"></i>
+        </button>
+        
+        <!-- Previous Song Button (hidden by default) -->
+        <button id="prevSong" class="prev-song pixel-box hidden" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-step-backward text-blue-400"></i>
+        </button>
+        
+        <!-- Next Song Button (hidden by default) -->
+        <button id="nextSong" class="next-song pixel-box hidden" style="background-color: var(--bg-secondary);">
+            <i class="fas fa-step-forward text-blue-400"></i>
+        </button>
+        
+        <!-- Audio element for background music -->
+        <audio id="background-music" loop preload="auto">
+            <source src="audios/Zelda.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
 
-    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="container mx-auto px-4 py-8 max-w-5xl">
         <!-- Header -->
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-6xl mb-4 glow">PLAYER PROFILE</h1>
@@ -45,7 +65,7 @@
                     </div>
                     <div class="text-left">
                         <h2 class="text-2xl md:text-4xl mb-2">JOÃO RESPEITA BARBOSA</h2>
-                        <p class="text-blue-400 mb-2">Level 27 Game Developer</p>
+                        <p class="text-blue-400 mb-2">Level 23 Game Developer</p>
                         <div class="flex gap-4 mb-3">
                             <div>
                                 <p class="text-xs">HP</p>
@@ -168,7 +188,7 @@
                         <ul class="space-y-2 text-sm">
                             <li class="flex justify-between"><span>Unity</span> <span class="skill-stars">★★★★★</span></li>
                             <li class="flex justify-between"><span>Unreal</span> <span class="skill-stars">★★★★☆</span></li>
-                            <li class="flex justify-between"><span>Godot</span> <span class="skill-stars">★★☆☆☆</span></li>
+                            <li class="flex justify-between"><span>Godot</span> <span class="skill-stars">★★★★☆</span></li>
                             <li class="flex justify-between"><span>GameMaker</span> <span class="skill-stars">★★★★★</span></li>
                             <li class="flex justify-between"><span>Scratch :P</span> <span class="skill-stars">★★★★★</span></li>
                         </ul>
@@ -257,51 +277,46 @@
             <div id="inventory" class="tab-content">
                 <h3 class="text-2xl mb-4 text-yellow-400">INVENTORY</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                    <a href="https://tecnico.ulisboa.pt/" target="_blank" class="pixel-box bg-gray-700 p-4 text-center hover:bg-gray-600 transition-colors cursor-pointer">
                         <div class="bg-yellow-900 text-yellow-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <p class="text-sm">Instituto Superior Técnico</p>
-                    </div>
-                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                    </a>
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/VR.mp4', false, false)" class="pixel-box bg-gray-700 p-4 text-center hover:bg-gray-600 transition-colors cursor-pointer">
                         <div class="bg-blue-900 text-blue-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
-                            <i class="fas fa-trophy"></i>
+                            <i class="fas fa-vr-cardboard"></i>
                         </div>
                         <p class="text-sm">VR Interaction Prototype</p>
-                    </div>
+                    </a>
                     <div class="pixel-box bg-gray-700 p-4 text-center">
                         <div class="bg-purple-900 text-purple-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
                             <i class="fas fa-book"></i>
                         </div>
                         <p class="text-sm">Thesis in AI for NPC Dialogues</p>
                     </div>
-                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                    <a href="javascript:void(0)" onclick="openPDFModal('docs/Prague.pdf')" class="pixel-box bg-gray-700 p-4 text-center hover:bg-gray-600 transition-colors cursor-pointer">
                         <div class="bg-green-900 text-green-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <p class="text-sm">Intensive Game Theory Course in Prague</p>
-                    </div>
+                    </a>
                 </div>
                 
                 <h4 class="text-xl mt-8 mb-4 text-yellow-300">PROJECTS</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="pixel-box bg-gray-700 p-4">
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/galo.mp4', true, true)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"Tic-Tac-Toe" (2020)</h5>
                         <p class="text-sm mb-3">My first game and code experience (after Hello World!), in the terminal and unbeatable CPU.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-gray-600 px-2 py-1 text-xs">Python</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">Programming Foundations</span>
                         </div>
-                    </div>
-                    <div class="pixel-box bg-gray-700 p-4">
-                        <h5 class="text-lg mb-2">"Galaxian Arcade" (2020)</h5>
-                        <p class="text-sm mb-3">Classic spaceship shooting asteroids with a low-level programming language</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Assembly</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Pain</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Introduction to Computer Architecture</span>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-play-circle mr-1"></i> View demo
                         </div>
-                    </div>
+                    </a>
+
                     <div class="pixel-box bg-gray-700 p-4">
                         <h5 class="text-lg mb-2">"Interactive Scene #1" (2023)</h5>
                         <p class="text-sm mb-3">Developed in Three.js, with manual mesh modeling, dynamic lighting, and VR support.</p>
@@ -322,16 +337,8 @@
 
                         </div>
                     </div>
-                    <div class="pixel-box bg-gray-700 p-4">
-                        <h5 class="text-lg mb-2">"Tangram Puzzle" (2025)</h5>
-                        <p class="text-sm mb-3">Simple game to test and discuss the use and benefits of VR.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Unity</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">C#</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Virtual Reality</span>
-                        </div>
-                    </div>
-                    <div class="pixel-box bg-gray-700 p-4">
+
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/unreal.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"Interactive Scene #2" (2023)</h5>
                         <p class="text-sm mb-3">This project consisted in 3 phases: CPU RayTracer, GPU PathTracer and lovely unreal engine 5 scene.</p>
                         <div class="flex flex-wrap gap-2">
@@ -339,8 +346,11 @@
                             <span class="bg-gray-600 px-2 py-1 text-xs">C++</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">3D Programming</span>
                         </div>
-                    </div>
-                    <div class="pixel-box bg-gray-700 p-4">
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-play-circle mr-1"></i> View demo
+                        </div>
+                    </a>
+                    <a href="https://gx.games/pt-br/games/tby99x/10-seconds-of-space/tracks/94ca94f0-8f08-4975-ba12-94ac0169bb4a/" target="_blank" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"10 Seconds of Space" (2024)</h5>
                         <p class="text-sm mb-3">The player is an astronaut surviving the platform levels with a spaceship ride in the middle ;)</p>
                         <div class="flex flex-wrap gap-2">
@@ -348,7 +358,10 @@
                             <span class="bg-gray-600 px-2 py-1 text-xs">Platform Game</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">Game Design</span>
                         </div>
-                    </div>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-gamepad mr-1"></i> Play now
+                        </div>
+                    </a>
                     <div class="pixel-box bg-gray-700 p-4">
                         <h5 class="text-lg mb-2">"Mental Twist" (2025)</h5>
                         <p class="text-sm mb-3">You are a student surviving the university life, balancing your mental well being with your academic responsabilities.</p>
@@ -445,8 +458,134 @@
             </div>
         </div>
     </div>
+    </div><!-- Fechamento da div main-content -->
+    
+    <!-- PDF Viewer Modal -->
+    <div id="pdfModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+        <div class="pixel-border pixel-box bg-gray-800 p-4 w-full max-w-5xl h-5/6 mx-4 flex flex-col">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl text-blue-400">Document Preview</h3>
+                <button onclick="closePDFModal()" class="px-3 py-1 bg-red-600 hover:bg-red-500 transition-colors rounded">
+                    <i class="fas fa-times mr-1"></i> Close
+                </button>
+            </div>
+            <div class="flex-grow bg-gray-900 relative">
+                <iframe id="pdfViewer" src="" class="absolute inset-0 w-full h-full" style="border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Viewer Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+        <div class="pixel-border pixel-box bg-gray-800 p-4 w-full max-w-5xl mx-4 flex flex-col">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl text-green-400">Video Preview</h3>
+                <button onclick="closeVideoModal()" class="px-3 py-1 bg-red-600 hover:bg-red-500 transition-colors rounded">
+                    <i class="fas fa-times mr-1"></i> Close
+                </button>
+            </div>
+            <div class="flex-grow bg-gray-900 relative flex justify-center items-center">
+                <video id="videoPlayer" src="" class="w-full h-auto max-h-[70vh]" controls autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script src="audio.js"></script>
+    <script src="intro-animation.js"></script>
+    
+    <script>
+        // Função para abrir o modal de visualização de PDF
+        function openPDFModal(pdfUrl) {
+            const modal = document.getElementById('pdfModal');
+            const pdfViewer = document.getElementById('pdfViewer');
+            
+            // Configurar o iframe para mostrar o PDF
+            pdfViewer.src = pdfUrl;
+            
+            // Mostrar o modal
+            modal.classList.remove('hidden');
+            
+            // Impedir rolagem da página de fundo
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Função para fechar o modal
+        function closePDFModal() {
+            const modal = document.getElementById('pdfModal');
+            const pdfViewer = document.getElementById('pdfViewer');
+            
+            // Limpar o iframe
+            pdfViewer.src = '';
+            
+            // Esconder o modal
+            modal.classList.add('hidden');
+            
+            // Restaurar rolagem da página
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Fechar o modal se clicar fora dele
+        document.getElementById('pdfModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closePDFModal();
+            }
+        });
+
+        // Função para abrir o modal de visualização de vídeo
+        function openVideoModal(videoUrl, isMuted = false, isVertical = false) {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const modalContent = document.querySelector('#videoModal .pixel-box');
+            
+            // Configurar o player de vídeo
+            videoPlayer.src = videoUrl;
+            videoPlayer.muted = isMuted;
+            
+            // Ajustar o tamanho do modal baseado na orientação do vídeo
+            if (isVertical) {
+                modalContent.classList.add('max-w-md');
+                modalContent.classList.remove('max-w-5xl');
+            } else {
+                modalContent.classList.add('max-w-5xl');
+                modalContent.classList.remove('max-w-md');
+            }
+            
+            // Mostrar o modal
+            modal.classList.remove('hidden');
+            
+            // Impedir rolagem da página de fundo
+            document.body.style.overflow = 'hidden';
+            
+            // Iniciar a reprodução do vídeo automaticamente
+            videoPlayer.play().catch(error => {
+                console.error("Erro ao reproduzir o vídeo automaticamente:", error);
+                // Em caso de erro, o usuário pode clicar para iniciar manualmente
+            });
+        }
+        
+        // Função para fechar o modal de vídeo
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            // Parar a reprodução e limpar o player
+            videoPlayer.pause();
+            videoPlayer.src = '';
+            
+            // Esconder o modal
+            modal.classList.add('hidden');
+            
+            // Restaurar rolagem da página
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Fechar o modal de vídeo se clicar fora dele
+        document.getElementById('videoModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeVideoModal();
+            }
+        });
+    </script>
 </body>
 </html>

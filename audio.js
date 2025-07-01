@@ -12,16 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const soundToggle = document.getElementById('soundToggle');
   const prevSongBtn = document.getElementById('prevSong');
   const nextSongBtn = document.getElementById('nextSong');
+  const ps2Audio = document.getElementById('ps2-audio');
   
   // Playlist configuration
   const playlist = [
-    { title: "Zelda", file: "audio/Zelda.mp3" },
-    { title: "Wii", file: "audio/Wii.mp3" },
-    { title: "GTA", file: "audio/GTA.mp3" },
-    { title: "TheLastOfUs", file: "audio/TheLastOfUs.mp3" },
-    { title: "Sonic", file: "audio/Sonic.mp3" },
-    { title: "Mario", file: "audio/Mario.mp3" },
-    { title: "Tetris", file: "audio/Tetris.mp3" }
+    { title: "Zelda", file: "audios/Zelda.mp3" },
+    { title: "Wii", file: "audios/Wii.mp3" },
+    { title: "GTA", file: "audios/GTA.mp3" },
+    { title: "TheLastOfUs", file: "audios/TheLastOfUs.mp3" },
+    { title: "Sonic", file: "audios/Sonic.mp3" },
+    { title: "Mario", file: "audios/Mario.mp3" },
+    { title: "Tetris", file: "audios/Tetris.mp3" }
   ];
   
   // Current song index
