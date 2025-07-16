@@ -238,12 +238,25 @@
                             </div>
                             <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
                         </div>
-                        <p class="mt-2 text-sm">Completed architectural courses, used softwares like Rhino, Revit and Grasshopper.</p>
+                        <p class="mt-2 text-sm">Completed architectural courses, used softwares like Rhino, Revit and Grasshopper. Made a big group project on a sustainable building design.</p>
                         <div class="mt-2 text-blue-400 text-xs flex items-center">
-                            <i class="fas fa-file-pdf mr-1"></i> View certificate
+                            <i class="fas fa-file-pdf mr-1"></i> View project booklet
                         </div>
                     </div>
-                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-blue-500 opacity-75">
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-orange-500 opacity-75 hover:bg-gray-600 transition-colors cursor-pointer" onclick="window.open('https://helendoron.com/', '_blank')">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-lg mb-1">English Teacher for Kids at Helen Doron</h4>
+                                <p class="text-gray-400 text-sm">2023 - 2025</p>
+                            </div>
+                            <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
+                        </div>
+                        <p class="mt-2 text-sm">Taught English to children aged 6-12, developing communication skills and creative teaching methods. Enhanced patience and leadership abilities.</p>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> Visit Helen Doron
+                        </div>
+                    </div>
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-blue-500 opacity-75 hover:bg-gray-600 transition-colors cursor-pointer" onclick="openPDFModal('docs/licenciatura.pdf')">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="text-lg mb-1">Bachelor's Degree in Computer Science</h4>
@@ -252,6 +265,9 @@
                             <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
                         </div>
                         <p class="mt-2 text-sm">Built strong foundations in programming, software engineering, and user interfaces.</p>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> View degree certificate
+                        </div>
                     </div>
                     <div class="pixel-box bg-gray-700 p-4 border-l-4 border-yellow-500 opacity-75">
                         <div class="flex justify-between items-start">
@@ -321,15 +337,6 @@
                     </a>
 
                     <div class="pixel-box bg-gray-700 p-4">
-                        <h5 class="text-lg mb-2">"Interactive Scene #1" (2023)</h5>
-                        <p class="text-sm mb-3">Developed in Three.js, with manual mesh modeling, dynamic lighting, and VR support.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-600 px-2 py-1 text-xs">JavaScript</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">3D</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Computer Graphics</span>
-                        </div>
-                    </div>
-                    <div class="pixel-box bg-gray-700 p-4">
                         <h5 class="text-lg mb-2">"Reinforcement learning" (2024)</h5>
                         <p class="text-sm mb-3">Dungeon maze with enemies, treasures and potions type game where the agent has to learn how to win.</p>
                         <div class="flex flex-wrap gap-2">
@@ -342,8 +349,8 @@
                     </div>
 
                     <a href="javascript:void(0)" onclick="openVideoModal('videos/unreal.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
-                        <h5 class="text-lg mb-2">"Interactive Scene #2" (2023)</h5>
-                        <p class="text-sm mb-3">This project consisted in 3 phases: CPU RayTracer, GPU PathTracer and lovely unreal engine 5 scene.</p>
+                        <h5 class="text-lg mb-2">"Unreal Engine 5 Scene" (2023)</h5>
+                        <p class="text-sm mb-3">This project showcases an environment created in Unreal Engine 5, featuring advanced lighting and shadow techniques.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-gray-600 px-2 py-1 text-xs">Unreal</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">C++</span>
@@ -365,7 +372,7 @@
                             <i class="fas fa-gamepad mr-1"></i> Play now
                         </div>
                     </a>
-                    <div class="pixel-box bg-gray-700 p-4">
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/mental.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"Mental Twist" (2025)</h5>
                         <p class="text-sm mb-3">You are a student surviving the university life, balancing your mental well being with your academic responsabilities.</p>
                         <div class="flex flex-wrap gap-2">
@@ -374,7 +381,10 @@
                             <span class="bg-gray-600 px-2 py-1 text-xs">Puzzle</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">RPG Retro</span>
                         </div>
-                    </div>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-play-circle mr-1"></i> View demo
+                        </div>
+                    </a>
                     <a href="javascript:void(0)" onclick="openVideoModal('videos/cinema.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"IST Cinema Club" (2023)</h5>
                         <p class="text-sm mb-3">Co-founded a cinema club at the university. Created this experimental video for a multimedia course.</p>
