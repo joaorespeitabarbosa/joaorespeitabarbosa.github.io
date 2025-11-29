@@ -47,6 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar o canvas da animação
     introCanvas.style.opacity = 1;
     
+    // Mostrar dica de pular após 0.5 segundos
+    const skipHint = document.getElementById('skip-hint');
+    if (skipHint) {
+      setTimeout(() => {
+        skipHint.classList.remove('hidden');
+      }, 500);
+    }
+    
     // Ativar efeitos CRT se a função existir
     if (typeof activateCRTEffects === 'function') {
       activateCRTEffects();
@@ -343,6 +351,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Função para finalizar a animação
   function finishAnimation() {
+    // Esconder dica de pular
+    const skipHint = document.getElementById('skip-hint');
+    if (skipHint) {
+      skipHint.classList.add('hidden');
+    }
+    
     // Fade out da tela de introdução
     introScreen.style.opacity = 0;
     
@@ -371,6 +385,110 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Adicionar event listener para o botão de start
   startButton.addEventListener('click', startIntroAnimation);
+  
+  // Variáveis para controlar o pressionamento de tecla no botão START
+  let keyPressTimer = null;
+  let keyPressProgress = 0;
+  const keyPressDuration = 500; // 0.5 segundos, mesmo tempo da animação hover
+  let keyJustUsedForStart = false; // Flag para evitar que a mesma tecla pule a intro
+  
+  // Event listener para teclas no botão START (espaço ou enter)
+  document.addEventListener('keydown', function(event) {
+    // Se a animação já começou, permite pular com QUALQUER tecla APENAS se a tecla não foi a que iniciou
+    if (animationStarted && !keyJustUsedForStart) {
+      skipAnimation();
+      return;
+    }
+    
+    // Se o botão START está visível e espaço ou enter foi pressionado
+    if ((event.key === ' ' || event.key === 'Enter') && startButton.style.display !== 'none') {
+      event.preventDefault(); // Previne scroll da página com espaço
+      
+      // Se já está pressionando, não faz nada
+      if (keyPressTimer) return;
+      
+      // Adiciona classe para ativar animação visual
+      startButton.classList.add('key-pressing');
+      
+      // Inicia o timer de progresso
+      const startTime = performance.now();
+      
+      keyPressTimer = setInterval(() => {
+        const elapsed = performance.now() - startTime;
+        keyPressProgress = Math.min(elapsed / keyPressDuration, 1);
+        
+        // Quando completar o progresso, inicia a animação
+        if (keyPressProgress >= 1) {
+          clearInterval(keyPressTimer);
+          keyPressTimer = null;
+          startButton.classList.remove('key-pressing');
+          keyJustUsedForStart = true; // Marca que esta tecla iniciou a intro
+          startIntroAnimation();
+        }
+      }, 16); // ~60fps
+    }
+  });
+  
+  // Event listener para soltar a tecla
+  document.addEventListener('keyup', function(event) {
+    if (event.key === ' ' || event.key === 'Enter') {
+      // Se estava pressionando para iniciar, cancela
+      if (keyPressTimer) {
+        clearInterval(keyPressTimer);
+        keyPressTimer = null;
+        keyPressProgress = 0;
+        startButton.classList.remove('key-pressing');
+      }
+      
+      // Reseta a flag quando soltar a tecla
+      if (keyJustUsedForStart) {
+        keyJustUsedForStart = false;
+      }
+    }
+  });
+  
+  // Função para pular a animação
+  function skipAnimation() {
+    // Só permite pular se a animação já começou
+    if (animationStarted) {
+      // Fade out do áudio do PS2
+      if (ps2Audio && !ps2Audio.paused) {
+        const fadeOutDuration = 500; // 0.5 segundos
+        const startVolume = ps2Audio.volume;
+        const fadeOutStart = performance.now();
+        
+        function fadeOutAudio() {
+          const elapsed = performance.now() - fadeOutStart;
+          const progress = Math.min(elapsed / fadeOutDuration, 1);
+          
+          ps2Audio.volume = startVolume * (1 - progress);
+          
+          if (progress < 1) {
+            requestAnimationFrame(fadeOutAudio);
+          } else {
+            ps2Audio.pause();
+            ps2Audio.currentTime = 0; // Reset para o início
+            ps2Audio.volume = startVolume; // Restaura volume original
+          }
+        }
+        
+        fadeOutAudio();
+      }
+      
+      // Força o progresso para 100%
+      animationTime = animationDuration;
+      // Chama imediatamente a função de finalização
+      finishAnimation();
+    }
+  }
+  
+  // Event listener para clique na tela - pula animação ao clicar
+  introScreen.addEventListener('click', function(event) {
+    // Só pula se a animação já começou e não é o botão START que foi clicado
+    if (animationStarted && event.target !== startButton) {
+      skipAnimation();
+    }
+  });
   
   // Ajustar o canvas em caso de redimensionamento da janela
   window.addEventListener('resize', function() {

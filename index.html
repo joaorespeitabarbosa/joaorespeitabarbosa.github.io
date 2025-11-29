@@ -16,6 +16,7 @@
     <div id="intro-screen">
         <canvas id="intro-canvas"></canvas>
         <button id="start-button">START</button>
+        <div id="skip-hint" class="skip-hint hidden">Press any key or click to skip</div>
         <div class="scanline"></div>
         <div class="crt-effect"></div>
         
@@ -180,7 +181,7 @@
                         <ul class="space-y-2 text-sm">
                             <li class="flex justify-between"><span>C/C++</span> <span class="skill-stars">★★★★☆</span></li>
                             <li class="flex justify-between"><span>C#</span> <span class="skill-stars">★★★★★</span></li>
-                            <li class="flex justify-between"><span>JavaScript</span> <span class="skill-stars">★★★☆☆</span></li>
+                            <li class="flex justify-between"><span>JavaScript</span> <span class="skill-stars">★★★★☆</span></li>
                             <li class="flex justify-between"><span>Python</span> <span class="skill-stars">★★★★★</span></li>
                             <li class="flex justify-between"><span>Assembly</span> <span class="skill-stars">★☆☆☆☆</span></li>
                         </ul>
@@ -220,9 +221,9 @@
                             </div>
                             <span class="bg-green-900 text-green-300 px-2 py-1 text-xs">ACTIVE QUEST</span>
                         </div>
-                        <p class="mt-2 text-sm">Exploring opportunities with studios that value Creativity, Sustainability and Player-Centric Design. Polishing portfolio projects to match studios expectations.</p>
+                        <p class="mt-2 text-sm">Exploring opportunities with studios that value Creativity and Player-Centric Design. Polishing portfolio projects to match studios expectations.</p>
                     </div>
-                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-blue-500 opacity-75">
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-blue-500 opacity-75 hover:bg-gray-600 transition-colors cursor-pointer" onclick="openPDFModal('docs/mestrado.pdf')">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="text-lg mb-1">Master's Degree in Computer Science</h4>
@@ -230,17 +231,20 @@
                             </div>
                             <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
                         </div>
-                        <p class="mt-2 text-sm">Specialized in Games and Human-Centered Computing, with the remaining courses in AI.</p>
+                        <p class="mt-2 text-sm">Specialized in Games and Interaction & Visualization, with the remaining courses in AI.</p>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> View degree certificate
+                        </div>
                     </div>
                     <div class="pixel-box bg-gray-700 p-4 border-l-4 border-purple-500 opacity-75 hover:bg-gray-600 transition-colors cursor-pointer" onclick="openPDFModal('docs/erasmus.pdf')">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h4 class="text-lg mb-1">Erasmus Experience in Turin</h4>
+                                <h4 class="text-lg mb-1">Erasmus Exchange in Turin</h4>
                                 <p class="text-gray-400 text-sm">2024 - 2025</p>
                             </div>
                             <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
                         </div>
-                        <p class="mt-2 text-sm">Completed architectural courses, used softwares like Rhino, Revit and Grasshopper. Made a big group project on a sustainable building design.</p>
+                        <p class="mt-2 text-sm">Completed architectural courses, used softwares like Rhino, Revit and Grasshopper. Made a group booklet project on a sustainable building design.</p>
                         <div class="mt-2 text-blue-400 text-xs flex items-center">
                             <i class="fas fa-file-pdf mr-1"></i> View project booklet
                         </div>
@@ -271,15 +275,18 @@
                             <i class="fas fa-file-pdf mr-1"></i> View degree certificate
                         </div>
                     </div>
-                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-yellow-500 opacity-75">
+                    <div class="pixel-box bg-gray-700 p-4 border-l-4 border-yellow-500 opacity-75 hover:bg-gray-600 transition-colors cursor-pointer" onclick="window.open('https://jovem.cascais.pt/', '_blank')">
                         <div class="flex justify-between items-start">
                             <div>
                                 <h4 class="text-lg mb-1">Volunteer at Municipal Council of Cascais </h4>
-                                <p class="text-gray-400 text-sm">2016 - 2022</p>
+                                <p class="text-gray-400 text-sm">2018 - 2021</p>
                             </div>
                             <span class="bg-blue-900 text-blue-300 px-2 py-1 text-xs">COMPLETED</span>
                         </div>
                         <p class="mt-2 text-sm">Organized community events and assisted in environmental protection projects.</p>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> Visit Cascais Jovem
+                        </div>
                     </div>
                     <div class="pixel-box bg-gray-700 p-4 border-l-4 border-green-500 opacity-75">
                         <div class="flex justify-between items-start">
@@ -310,12 +317,12 @@
                         </div>
                         <p class="text-sm">VR Interaction Prototype</p>
                     </a>
-                    <div class="pixel-box bg-gray-700 p-4 text-center">
+                    <a href="javascript:void(0)" onclick="openPDFModal('docs/TESE.pdf')" class="pixel-box bg-gray-700 p-4 text-center hover:bg-gray-600 transition-colors cursor-pointer">
                         <div class="bg-purple-900 text-purple-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
                             <i class="fas fa-book"></i>
                         </div>
                         <p class="text-sm">Thesis in AI for NPC Dialogues</p>
-                    </div>
+                    </a>
                     <a href="javascript:void(0)" onclick="openPDFModal('docs/Prague.pdf')" class="pixel-box bg-gray-700 p-4 text-center hover:bg-gray-600 transition-colors cursor-pointer">
                         <div class="bg-green-900 text-green-300 w-12 h-12 mx-auto flex items-center justify-center text-2xl mb-2">
                             <i class="fas fa-laptop-code"></i>
@@ -326,26 +333,14 @@
                 
                 <h4 class="text-xl mt-8 mb-4 text-yellow-300">PROJECTS</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="javascript:void(0)" onclick="openVideoModal('videos/galo.mp4', true, true)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
-                        <h5 class="text-lg mb-2">"Tic-Tac-Toe" (2020)</h5>
-                        <p class="text-sm mb-3">My first game and code experience (after Hello World!), in the terminal and unbeatable CPU.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Python</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Programming Foundations</span>
-                        </div>
-                        <div class="mt-2 text-blue-400 text-xs flex items-center">
-                            <i class="fas fa-play-circle mr-1"></i> View demo
-                        </div>
-                    </a>
-
-                    <a href="javascript:void(0)" onclick="openVideoModal('videos/RL.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
-                        <h5 class="text-lg mb-2">"Reinforcement learning" (2024)</h5>
-                        <p class="text-sm mb-3">Dungeon maze with enemies, treasures and potions type game where the agent has to learn how to win.</p>
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/Mental.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
+                        <h5 class="text-lg mb-2">"Mental Twist" (2025)</h5>
+                        <p class="text-sm mb-3">You are a student surviving the university life, balancing your mental well being with your academic responsabilities.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-gray-600 px-2 py-1 text-xs">Unity</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">C#</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Machine Learning</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">AI for Games</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Puzzle</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">RPG Retro</span>
                         </div>
                         <div class="mt-2 text-blue-400 text-xs flex items-center">
                             <i class="fas fa-play-circle mr-1"></i> View demo
@@ -364,6 +359,7 @@
                             <i class="fas fa-play-circle mr-1"></i> View demo
                         </div>
                     </a>
+
                     <a href="https://gx.games/pt-br/games/tby99x/10-seconds-of-space/tracks/94ca94f0-8f08-4975-ba12-94ac0169bb4a/" target="_blank" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"10 Seconds of Space" (2024)</h5>
                         <p class="text-sm mb-3">The player is an astronaut surviving the platform levels with a spaceship ride in the middle ;)</p>
@@ -376,19 +372,21 @@
                             <i class="fas fa-gamepad mr-1"></i> Play now
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="openVideoModal('videos/Mental.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
-                        <h5 class="text-lg mb-2">"Mental Twist" (2025)</h5>
-                        <p class="text-sm mb-3">You are a student surviving the university life, balancing your mental well being with your academic responsabilities.</p>
+
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/RL.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
+                        <h5 class="text-lg mb-2">"Reinforcement learning" (2024)</h5>
+                        <p class="text-sm mb-3">Dungeon maze with enemies, treasures and potions type game where the agent has to learn how to win.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-gray-600 px-2 py-1 text-xs">Unity</span>
                             <span class="bg-gray-600 px-2 py-1 text-xs">C#</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">Puzzle</span>
-                            <span class="bg-gray-600 px-2 py-1 text-xs">RPG Retro</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Machine Learning</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">AI for Games</span>
                         </div>
                         <div class="mt-2 text-blue-400 text-xs flex items-center">
                             <i class="fas fa-play-circle mr-1"></i> View demo
                         </div>
                     </a>
+
                     <a href="javascript:void(0)" onclick="openVideoModal('videos/cinema.mp4', false, false)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
                         <h5 class="text-lg mb-2">"IST Cinema Club" (2023)</h5>
                         <p class="text-sm mb-3">Co-founded a cinema club at the university. Created this experimental video for a multimedia course.</p>
@@ -399,6 +397,18 @@
                         </div>
                         <div class="mt-2 text-blue-400 text-xs flex items-center">
                             <i class="fas fa-film mr-1"></i> Watch video
+                        </div>
+                    </a>
+
+                    <a href="javascript:void(0)" onclick="openVideoModal('videos/galo.mp4', true, true)" class="pixel-box bg-gray-700 p-4 hover:bg-gray-600 transition-colors cursor-pointer">
+                        <h5 class="text-lg mb-2">"Tic-Tac-Toe" (2020)</h5>
+                        <p class="text-sm mb-3">My first game and code experience (after Hello World!), in the terminal and unbeatable CPU.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Python</span>
+                            <span class="bg-gray-600 px-2 py-1 text-xs">Programming Foundations</span>
+                        </div>
+                        <div class="mt-2 text-blue-400 text-xs flex items-center">
+                            <i class="fas fa-play-circle mr-1"></i> View demo
                         </div>
                     </a>
                 </div>
