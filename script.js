@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const character = document.querySelector('.character');
     if (character) {
         const images = [
+            'images/link.png',
             'images/photo1.jpeg',
             'images/photo2.jpeg',
             'images/photo3.jpeg',
